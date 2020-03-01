@@ -1,6 +1,10 @@
 # OctoPrint-VirtualSD
 
-**TODO:** Describe what your plugin does.
+Klipper virtual SD card is not writable by default. You can get rid with it by changing SD card dir to Octoprint upload folder, but you always need to start printing manually.
+
+With this plugin virtual card can act like regular SD card, you can drag'n'drop files into it, and use any upload plugin like Cura Octoprint plugin.
+
+Now you can print files from Cura through fast Klipper virtual SD card.
 
 ## Setup
 
@@ -9,9 +13,18 @@ or manually using this URL:
 
     https://github.com/morgan55555/OctoPrint-VirtualSD/archive/master.zip
 
-**TODO:** Describe how to install your plugin, if more needs to be done than just installing it via pip or through
-the plugin manager.
-
 ## Configuration
 
-**TODO:** Describe your plugin's configuration options (if any).
+ - Enable virtual SD Card support - turn on write mode for virtual SD card
+ - Enable SD Card remove command (M30) - turn on remove command for files (usefull when SD card is not in default Uploads dir)
+ - Use Octoprint upload directory as SD directory - SD files will not move from uploads
+ - Virtual SD card directory - set SD directory manually
+
+## Klipper configuration
+
+Just copy that code and change path to any that you need.
+
+```ini
+[virtual_sdcard]
+path: /home/pi/.octoprint/uploads
+```
