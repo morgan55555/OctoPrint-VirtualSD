@@ -28,3 +28,9 @@ Just copy that code and change path to any that you need.
 [virtual_sdcard]
 path: /home/pi/.octoprint/uploads
 ```
+
+## Known issues
+
+> SD card printing from Cura Octoprint plugin will show endless "Analyzing" message, if PrintTimeGenius is installed.
+
+Press "Print now" button in this message for printing, or disable PrintTimeGenius.
