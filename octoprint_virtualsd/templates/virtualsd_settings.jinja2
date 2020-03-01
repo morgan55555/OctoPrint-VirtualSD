@@ -1,0 +1,40 @@
+<form class="form-horizontal">
+	<h4>General</h4>
+    <div class="control-group">
+        <div class="controls">
+            <label class="checkbox">
+            <input type="checkbox" data-bind="checked: settings.sdcardUploadReplace"> Enable virtual SD Card support
+            </label>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <label class="checkbox">
+            <input type="checkbox" data-bind="checked: settings.sdcardRemoveReplace"> Enable SD Card remove command (M30)
+            </label>
+        </div>
+    </div>
+	
+	<div data-bind="visible: settings.sdcardUploadReplace() || settings.sdcardRemoveReplace() " >
+		<h4>Folders</h4>
+		
+		<div class="control-group">
+			<div class="controls">
+				<label class="checkbox">
+				<input type="checkbox" data-bind="checked: settings.sdDirectoryByOctoprint"> Use Octoprint upload directory as SD directory
+				</label>
+			</div>
+		</div>
+
+		<div class="control-group" data-bind="css: {error: testVirtualSdPathChecked() && !testVirtualSdPathValid(), success: testVirtualSdPathChecked() && testVirtualSdPathValid()}, visible: !settings.sdDirectoryByOctoprint()" >
+			<label class="control-label">Virtual SD card directory</label>
+			<div class="controls">
+				<div class="input-append input-block-level">
+					<input type="text" data-bind="value: settings.sdDirectory">
+					<a class="btn add-on" data-bind="click: function() { testVirtualSdPath(false); }, enable: settings.sdDirectory() && !testVirtualSdPathBusy(), css: {disabled: !settings.sdDirectory() || testVirtualSdPathBusy()}"><i class="fa fa-spinner fa-spin" data-bind="visible: testVirtualSdPathBusy"></i>Test</a>
+				</div>
+				<span class="help-block" data-bind="visible: testVirtualSdPathChecked(), text: testVirtualSdPathStatus"></span>
+			</div>
+		</div>
+	</div>
+</form>
